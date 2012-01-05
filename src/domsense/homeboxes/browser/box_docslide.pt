@@ -1,0 +1,18 @@
+<tal:if condition="options/contents">
+    <tal:def define="contents options/contents">
+        <tal:item repeat="item contents">
+            <div class="subcontent"
+                 tal:attributes="id string:subcontent-${repeat/item/number}-${item/uid}"
+                 tal:content="structure item/text" />
+        </tal:item>
+        <ul class="slide-controls">
+            <tal:ctrls repeat="item contents">
+                <li>
+    <a tal:attributes="href string:#subcontent-${repeat/item/number}-${item/uid}">
+        <span tal:content="repeat/item/number" />
+    </a>
+                </li>
+            </tal:ctrls>
+        </ul>
+    </tal:def>
+</tal:if>

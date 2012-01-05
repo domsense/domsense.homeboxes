@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<object name="portal_javascripts">
+    <!-- enable jquerytools plugins -->
+
+    <javascript id="++resource++plone.app.jquerytools.plugins.js"
+                enabled="True" />
+
+    <javascript cacheable="True" compression="safe" cookable="True"
+                enabled="True" expression=""
+                inline="False"
+                id="++resource++domsense.homeboxes/homebox.js"
+                />
+</object>

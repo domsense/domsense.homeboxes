@@ -1,0 +1,35 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="domsense.homeboxes">
+
+  <five:registerPackage package="." initialize=".initialize" />
+
+  <include file="permissions.zcml" />
+  <include package=".browser" />
+  <include package=".content" />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="domsense.homeboxes"
+      directory="profiles/default"
+      description="Installs the domsense.homeboxes package"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+  <!-- -*- extra stuff goes here -*- -->
+
+  <genericsetup:importStep
+      name="domsense.homeboxes.various"
+      title="domsense.homeboxes: miscellaneous import steps"
+      description="Various import steps that are not handled by GS import/export handlers."
+      handler="domsense.homeboxes.setuphandlers.setupVarious">
+  </genericsetup:importStep>
+
+
+  <!-- vocabularies -->
+  <utility factory=".vocabularies.HomeboxesList"
+           name="homeboxes_vocab" />
+
+</configure>

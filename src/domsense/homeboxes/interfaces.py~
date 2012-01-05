@@ -1,0 +1,9 @@
+from zope import interface
+
+class IHomeBox(inteface.Interface):
+    """ marker interface that identify an HomeBox
+    """
+    
+class IHomeBoxContainer(inteface.Interface):
+    """ marker interface that identify an HomeBox Container
+    """

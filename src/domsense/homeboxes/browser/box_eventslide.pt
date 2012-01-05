@@ -1,0 +1,19 @@
+<div id="slidetext" class="slidenews"  style="height:90px!important;width:100%!important;">
+    <tal:imgs tal:repeat="event contents">
+        <div class="homebox-object" style="width:100%!important;background:none!important;">
+
+            <a class="event-title"
+               href="#"
+               tal:attributes="href python:event.getObject().absolute_url()"
+               tal:content="structure python:event.getObject().title"/>
+            <br/>
+            <a i18n:translate="event_where">where:</a>
+            <a style="margin-left:5px;font-size:10pt"
+               tal:content="structure python:event.getObject().location"/>
+            <br/>
+            <a i18n:translate="event_when">when:</a>
+            <a style="margin-left:5px;font-size:10pt"
+               tal:content="structure python:str(toLocalizedTime(event.getObject().startDate))+' - '+str(toLocalizedTime(event.getObject().endDate))"/>
+        </div>
+    </tal:imgs>
+</div>

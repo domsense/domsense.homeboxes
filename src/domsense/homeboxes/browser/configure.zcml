@@ -1,0 +1,57 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="domsense.homeboxes">
+
+  <include package="plone.app.contentmenu" />
+
+  <!-- -*- extra stuff goes here -*- -->
+
+  <browser:page
+    for="*"
+    class=".views.Helpers"
+    name="homebox_helpers"
+    permission="cmf.ManagePortal"
+    />
+
+  <!-- renderers -->
+
+  <adapter factory=".renderers.Doc" name="doc" />
+  <adapter factory=".renderers.DocSlide" name="docslide" />
+  <adapter factory=".renderers.ImgSlide" name="imgslide" />
+  <adapter factory=".renderers.EventSlide" name="eventslide" />
+
+  <browser:resourceDirectory
+      name="domsense.homeboxes"
+      directory="resources"
+      layer=".interfaces.IHomeBoxLayer"
+      />
+
+  <!--<browser:page-->
+      <!--for="*"-->
+      <!--name="homebox_preview"-->
+      <!--class=".homebox_preview.HomeBox_PreView"-->
+      <!--template="homebox_preview.pt"-->
+      <!--allowed_interface=".homebox_preview.IHomeBox_PreView"-->
+      <!--permission="zope.Public"-->
+      <!--layer=".interfaces.IHomeBoxLayer"-->
+      <!--/>-->
+
+  <browser:viewletManager
+    name="domsense.homeboxesManager"
+    provides=".interfaces.IHomeboxManager"
+    class="plone.app.viewletmanager.manager.OrderedViewletManager"
+    layer=".interfaces.IHomeBoxLayer"
+    permission="zope2.View"
+    />
+
+  <browser:viewlet
+    name="domsense.homeboxes"
+    manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
+    class=".viewlets.HomeboxViewlet"
+    permission="zope2.View"
+    layer=".interfaces.IHomeBoxLayer"
+    template="homebox.pt"
+    />
+
+</configure>

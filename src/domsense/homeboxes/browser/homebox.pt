@@ -1,0 +1,26 @@
+<div id="homebox-container"
+     tal:condition="view/boxes"
+     tal:define="boxes view/getBoxes;
+                 toLocalizedTime nocall:context/@@plone/toLocalizedTime;"
+     i18n:domain="domsense.homeboxes">
+
+    <div tal:repeat="box boxes"
+         tal:attributes="class box/getWrapperCssClass">
+
+        <div class="homebox"
+             tal:attributes="class box/getCssClass">
+
+            <span tal:condition="view/isManager" class="manager-help">
+               box: <a tal:attributes="href box/url" target="_new">
+                          <span tal:replace="box/title" />
+                    </a>, pos:<span tal:replace="repeat/box/number" />
+            </span>
+
+            <div class="content">
+                <div tal:replace="structure box/render" />
+            </div>
+        </div>
+
+    </div>
+
+</div>

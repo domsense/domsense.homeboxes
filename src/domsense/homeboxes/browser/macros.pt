@@ -1,0 +1,13 @@
+<metal:doc define-macro="doc">
+    <div tal:content="structure box/getRawText" />
+</metal:doc>
+
+<metal:doc define-macro="imgslide">
+    <div id="slideshow">
+        <tal:imgs tal:repeat="img python:box.getFolderContents({'portal_type':'Image'},full_object=True)">
+            <a href="#" tal:attributes="href python:img.getLocation()">
+                <img tal:replace="structure python:img.getImage()"/>
+            </a>
+        </tal:imgs>
+    </div>
+</metal:doc>

@@ -1,0 +1,3 @@
+<tal:def define="text options/text">
+    <div tal:content="structure text" />
+</tal:def>

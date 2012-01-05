@@ -1,0 +1,7 @@
+<div id="slideshow">
+    <tal:imgs tal:repeat="img box/contents">
+        <a href="#" tal:attributes="href img/getLocation">
+            <img tal:replace="structure img/getImage"/>
+        </a>
+    </tal:imgs>
+</div>
